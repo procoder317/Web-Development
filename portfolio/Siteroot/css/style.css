@@ -1,0 +1,75 @@
+/* 
+    Document   : style
+    Created on : 27 Oct, 2015, 1:23:24 PM
+    Author     : sonu
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.description {
+    /*color: red;*/
+    /*font-style: initial;*/
+    max-width: 80%;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+}
+
+/** {
+    outline: 1px solid red !important;  
+}*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image{
+    /*width: auto;*/
+    text-align: center;
+    /*max-width: 100%;*/
+    /*height: auto;*/
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    margin-bottom: 1.5%
+}
+
+
+@media only screen and (min-width: 850px){
+    .app {
+        display: flex;    
+    }
+    
+    .description {
+        /*color: red;*/
+        font-style: initial;
+        max-width: 80%;
+        margin-left: 1.5%;
+        margin-right: 10%;
+    }
+    
+    .image {
+        margin-left: 10.5%;
+    }
+}
+.title {
+    font-family: monospace;
+    font-weight: lighter;
+    background: #33BEBE;
+    color: white;
+    margin-left: 10.5%;
+    margin-right: 10.5%;
+    text-align: center;
+}
+#mfolio {
+    text-align: center;
+    background:  #b3b3b3;
+}
+#mfolio_new:hover {
+    color:  #df8505;
+}
