@@ -1,0 +1,31 @@
+body {
+    font-family: 'Poiret One', cursive;
+}
+
+/*
+* {
+    outline: 1px solid red;
+}
+*/
+.navbarcolor {
+    background: #d6d6d6;
+    margin-left: 1.1%;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.mshift {
+    margin-left: 25%;
+}
+
+.text_mute {
+    background: antiquewhite;
+    color: coral;
+    font-stretch: expanded;
+    font-size: 50px;
+    text-align: left;
+}
+
+.imgsizeup {
+    max-height: 140px;
+}

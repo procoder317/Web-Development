@@ -1,0 +1,83 @@
+/*adding out line for design test*/
+/*
+* {
+  outline: 1px solid red;  
+}*/
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*Horizental rulers parametes changer*/
+.linewidth {
+/*  border: 1px solid #bcbbbb;*/
+  border-width: medium;
+}
+
+/*set margin for the logo*/
+.imgmargin {
+  margin-top: 2%;
+}
+
+/*set mid immage width*/
+.imgwidth {
+  width: 97%;
+  height: 100%;
+}
+
+/*text mute for featured work*/
+.text-mutedx {
+  text-align: left;
+  color: darkgrey;
+  letter-spacing: 5px;
+  font-weight: 900;
+  font-size: 250%;
+  font-stretch: ultra-expanded;
+
+}
+
+/*used to align the Featured Work row*/
+.featureframe {
+  margin-left: 0.8%;
+}
+
+/*font colour for the imaged texts under featured Work*/
+.fontcolour {
+  color: #747704;
+}
+
+/*Styling the entire menu drop down list*/
+ul {
+  margin-left: 2%;
+  padding: 0;
+/*  margin: 0;*/
+  list-style: none;
+}
+
+/*Now we need to transform the first-level list into a horizontal menu bar.*/
+li {
+  float: left;
+  position: relative;
+  width: 10em;
+}
+
+/*The next step is to tackle the second-level lists that will be the dropdowns themselves*/
+li ul {
+  display: none;
+  position: absolute; 
+  top: 1em;
+  left: 0;
+}
+
+/*making it work for most browsers including IE*/
+li > ul {
+   top: auto;
+   left: auto;
+ }
+
+/*I will be able to see dropdown on hover */
+li:hover ul { 
+  display: block;
+  color: brown;
+  background: beige;
+}
