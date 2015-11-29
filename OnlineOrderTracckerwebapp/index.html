@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom Tracker</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script src="js/angularApp.js"></script>
+</head>
+
+<body>
+  <!--Put the entire page in a single container-->
+  <div  class="container-fluid" id="topmost-frame" ng-app="tracingApp" ng-controller="orderCtrl">
+    
+    <!--Top header section row divided into three cols-->
+    <div class="row" id="head-section">
+     <div class="col-lg-6">
+       <img src="img/Logo.png" alt="ZoomCar Logo" class="img-responsive" id="zoomcar-logo"/>
+       <h1 id="trackhead">Tracker</h1><span id="headspan"> &shy; &shy; &mdash;live tracking made easy!</span>
+     </div>
+    
+     <div class="col-lg-6 center-block">
+        <div class="panel panel-default new-panel">
+          <div class="panel-body new-panel-body">
+            <span id="defaulthead"><b>API Hits:</b>{{hitcount}}</span>
+            <span style="padding: 3px">&shy;<b> | </b> &shy;</span>
+            <span id="defaulthead"><b>Total Parcels:</b>{{items.length}}</span>
+          </div>
+        </div>
+       </div>
+    </div>
+    <hr style="border: 1.5px solid #049372">
+    <!--Content body section total frame divided into two cols as right and left sub sections-->
+    <div class="row" id="info-section">
+      <!--item list section-->
+      <div class="col-lg-6" style="border-right: 1px solid lightgray">
+        <!--Search panel-->
+        <div class="row center-block">
+         <div class="panel panel-default search-panel">
+          <div class="panel-body search-body">
+            <span class="glyphicon glyphicon-search" style=""></span>
+            <input type="search" class="custom-search" id="searchbox" placeholder="Search (by parcel name, price, weight)" ng-model="searchitem"/>
+             <span class="fa fa-times-circle" style="padding-right:1%;"></span> 
+          </div>
+         </div>
+        </div>
+        <!--items panels for tracking using angular js-->
+        <div id="panelidx" class="row center-block" style="height:750px; overflow-y: scroll">
+          <a href="#item-description" ng-model="infoshowit">
+         <div class="panel panel-default item-panel" ng-repeat="item in items | filter:searchitem | orderBy: filtername" ng-click="dataselect(item)">
+          <div class="panel-body item-body table-responsive">
+            <table class="table borderless">
+              <tr>
+                <td class="fa fa-shopping-cart" style="text-align: left; width:5px; padding:0px"></td>
+                <td id="item-name" style="text-align: left;">{{item.name}}</td>
+                <td id="item-price" style="text-align: right;">&#8377;{{item.price}}</td>   
+                <td class="fa fa-chevron-down"  id="closeit" style="text-align: right; padding-left:0px;width:5px"></td> 
+              </tr>
+            </table> 
+           </div>
+          </div></a>
+        </div>
+        <!--left sub Section for buttons-->
+        <hr style="border: 2px solid darkblue; position:relative; bottom:0;">
+        <div class="row text-center" style="padding: 2%;">
+           <!--left button-->
+           <div class="col-lg-4 ">
+              <button type="button" class="btn btn-success btn-customize btn-lg" ng-click="filterby()" ng-model="buttonshowit">
+                <span class="fa fa-sort"></span><b> Sort by</b>
+              </button>
+           </div>
+           <div class="col-lg-8 " id="orderingby" ng-style="buttonshowit">
+              <button type="button" class="btn btn-success btn-customize text-center" ng-click="orderbyprice()" ng-model="filtername">
+                <span class="fa fa-money" style="padding-left: 6px"></span><b> Value</b>
+              </button>
+               <button type="button" class="btn btn-success btn-customize text-center" ng-click="orderbyweight()" ng-model="filtername">
+                  <span class="fa fa-database"></span><b> Weight</b>
+               </button>
+           </div>
+        </div>
+      </div>
+      <!--Right side Item description section-->
+      <div class="col-lg-6 text-center" id="item-description">
+        <span id="description-panelhead"><b>Select item to view order details below here</b></span>
+       <div class="row description-section" style="border: 5px solid #f4d03f; border-radius: 5px 5px 5px 5px; margin: 3%" ng-style="infoshowit">
+          <!--image and info details sub section-->
+          <div class="row center-block" style="padding-top: 2%; padding-left: 10%; padding-right: 10%">
+             <div class="col-lg-6">
+               <div class="row text-left">
+               <img id="item-image" class="img-responsive img-thumbnail" ng-src="{{iteminfo.image}}" alt="Item Image" style="width: 70%; height: 65%; margin: 2%"/>
+               </div>
+               <div class="row text-center" style="background-color: white; margin: 2%; width: 40%">
+                 <span>
+                  {{iteminfo.date | date:'MM/dd/yyyy'}}
+                  <span class="fa fa-calendar text-right"></span>
+                 </span>
+                 
+               </div>
+             </div>
+             <div class="col-lg-6">
+               <div class="panel panel-default" id="item-prop-panel">
+                <div class="panel-heading" id="description-panelhead">
+                  <Span>{{iteminfo.name}}</Span>
+                </div>
+                 <div class="panel-body">
+                   <table class="table table-striped table-responsive borderless">
+                     <tr>
+                        <td class="glyphicon glyphicon-shopping-cart" style="text-align: left; width:5px; padding:0px"></td>
+                        <td id="item-name" style="text-align: left;">{{iteminfo.type | uppercase}}</td>
+                        <td class="glyphicon glyphicon-credit-card"  id="closeit" style="text-align: right; padding-left:0px;width:5px"></td>
+                        <td id="item-price" style="text-align: right;">&#8377;{{iteminfo.price}}</td>
+                    </tr>
+                    <tr>
+                        <td class="fa fa-database" style="text-align: left; width:5px; padding:0px"></td>
+                        <td style="text-align: left;">{{iteminfo.weight}}</td>
+                      <td class="fa fa-slack"  id="closeit" style="text-align: right; padding-left:0px;width:5px"></td>
+                        <td style="text-align: right;">{{iteminfo.quantity}}</td>
+                    </tr>
+                    <tr>
+                        <td class="fa fa-phone-square" style="text-align: left; width:5px; padding:0px"></td>
+                        <td style="text-align: left;">{{iteminfo.phone}}</td>
+                      <td style="text-align: right; padding-left:0px;width:5px;background-color:{{iteminfo.colour}}">&shy;</td>
+                        <td style="text-align: right;">Color</td>
+                    </tr>
+                   </table>
+                 </div>
+               </div>
+             </div>
+          </div>
+          <!--heading section for live location update-->
+          <div class="row text-center">
+             <div class="col-lg-12">
+                <div class="panel panel-default new-panel" id="location-head">
+                  <div class="panel-body new-panel-body">
+                    <span>Current Location [Live update]</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!--google map location live view-->
+          <div class="row">
+            <div class="col-lg-12">
+              <div  class="center-block img-responsive img-thumbnail" id="googleMap"></div>
+            </div>
+          </div>
+          <!--Like and Share button section-->
+          <div class="row text-center" style="margin: 5%;">
+            <div class="col-lg-6 ">
+              <button type="button" class="btn btn-success btn-customize btn-lg text-center">
+                <span class="fa fa-thumbs-o-up"></span><b> Like</b>
+              </button>
+            </div>
+             <div class="col-lg-6">
+              <button type="button" class="btn btn-success btn-customize btn-lg text-center">
+                <span class="fa fa-share-alt"></span><b> Share</b>
+              </button>
+            </div>
+          </div>
+        </div>
+        <a href="#info-section" style="margin-left:85%;background-color:white;"><span class="fa fa-backward">Back</span></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

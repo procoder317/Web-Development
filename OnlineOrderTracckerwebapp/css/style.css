@@ -1,0 +1,228 @@
+/*
+* {
+  outline: 1px solid red;
+}
+*/
+
+body {
+  font-family: 'Dosis', sans-serif;
+}
+/*###############################################################
+All the head section styling
+###############################################################*/
+#head-section {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: #132330;
+  box-shadow: 20px 25px 20px gray;
+  font-family: 'Audiowide', cursive;
+}
+
+#zoomcar-logo {
+  width: 10%;
+  height: 10%;
+  float:left;
+}
+
+#trackhead {
+  display: inline-block;
+  color: #87d37c;
+}
+
+#headspan {
+  color: turquoise;
+  font-weight: 900;
+}
+
+.new-panel {
+  margin-top: 3%;
+  padding-top: 0.5%;
+  width: 70%;
+  margin-bottom: 10px;
+  background-color: #b2f2b6;
+  border: 2px solid green;
+  border-radius: 10px;
+  color: maroon;
+  text-align: center;
+}
+
+.new-panel-body {
+  padding: 5px;
+}
+
+#defaulthead  b{
+   display: inline-block;
+	color: black;
+    padding-left: 3%;
+    padding-right: 3%
+}
+
+
+/*###############################################################
+content section styling codes 
+###############################################################*/
+#info-section {
+/*  background-color: dimgrey;*/
+  background-image: url(debut_dark.png);
+  background-repeat:repeat;
+/*
+  overflow: scroll;
+  max-height: 400px;
+*/
+}
+
+
+/*code for search panel customization*/
+.custom-search {
+  width: 85%;
+  height: 25px;
+  border-radius: 5px;
+  border: 0 none;
+}
+
+.custom-search:focus, .custom-search:active {
+	border: 0 none;
+/*    overflow: hidden;*/
+}
+
+
+.search-panel, .item-panel {
+  margin-top: 2%;
+  padding-top: 0%;
+  width: 70%;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 2px solid cadetblue;
+  border-radius: 10px;
+  color: lightgray;
+  
+}
+
+/*
+@media screen and (max-width: 650px) {
+  .panel {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+*/
+
+.search-body, .item-body {
+  padding: 5px;
+  font-family: fantasy;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+
+.item-panel {
+	background-color: transparent;
+    color: lightcyan;
+}
+
+.item-panel:hover {
+	background-color: #eeeeee;
+    color: darkgreen;
+}
+
+.item-panel:active, 
+.item-panel:focus {
+	background-color: lightcyan;
+    color: darkgreen;
+    border: 2px solid seagreen;
+    box-sizing: content-box;
+}
+
+
+a:link {
+	text-decoration: none;
+}
+
+/*item table inside panel modification*/
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+    background: none;
+}
+
+
+/*buttons customization*/
+.btn-customize {
+  background: lavender;
+  color: darkgreen;
+  border-radius: 0%;
+  border: 0 none;
+}
+
+
+#orderingby {
+  visibility: hidden;
+  display:inline-block;
+}
+
+/*###############################################################
+description section stylings
+###############################################################*/
+
+
+
+
+/*header for live location updates map*/
+#location-head {
+  width: 80%;
+  margin-left: 10%;
+  background-color: #e4f1fe;
+  border: 1.3px solid black;
+  color: dimgray;
+  letter-spacing: 4px;
+  font-weight: 600;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.description-section {
+  visibility: hidden;
+}
+
+#description-panelhead {
+  font-weight: 700;
+  color: white;
+  font-family: "gruppo", sans;
+  background-color: black;
+  border-radius: 4%;
+  text-align: center;
+  overflow: hidden;
+}
+
+#item-image:hover {
+  -ms-transform: scale(1.15,3); /* IE 9 */
+  -webkit-transform: scale(1.15); /* Safari */
+  transform: scale(1.15);
+}
+
+#item-prop-panel {
+  opacity: 0.8;
+}
+
+#item-prop-panel:hover {
+  opacity: 1;
+  color: maroon;
+}
+
+#googleMap {
+  height:400px;
+  width:80%;
+  border-radius: 5px 5px 5px 5px;
+  margin-bottom: 5%;
+}
+
+
+
+/*###############################################################
+page foot section and final closure
+###############################################################*/
+.page-footer {
+  letter-spacing: 0.1em;
+  background-color: cadetblue;
+  width: auto;
+  height: 90px;
+  color: white;
+}
